@@ -6,6 +6,7 @@
         #{yield(:title)} -
       The Cookbook
     %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}-#{controller.action_name}"}

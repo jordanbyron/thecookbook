@@ -3,10 +3,13 @@
 .row
   .col-md-10
     %h1= @recipe.name
+    = @recipe.fork_origin_link
   .col-md-2.text-right
     - if current_user == @recipe.user
-      = link_to "Edit Recipe", edit_recipe_path(@recipe),
+      = link_to "Edit Recipe", edit_recipe_path(@recipe.id),
         class: 'btn btn-primary'
+    - else
+      = @recipe.fork_link(current_user)
 .row
   .col-md-12
     %h3 Ingredients
@@ -24,11 +27,11 @@
   .col-md-12
     %hr
     %p
-      - if @recipe.tags.any?
+      - if @recipe.tag_links.present?
         .pull-right
           %strong Tags:
-          = @recipe.tag_list
+          = @recipe.tag_links
 
-      - if @recipe.source?
+      - if @recipe.source.present?
         %strong Source:
-        = link_to @recipe.source, @recipe.source
+        = @recipe.source

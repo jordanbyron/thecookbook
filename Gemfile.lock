@@ -44,6 +44,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    database_cleaner (1.2.0)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -55,6 +56,11 @@ GEM
       dotenv (= 0.9.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     haml (4.0.5)
@@ -75,6 +81,9 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.3.3)
+    minitest-rails (2.0.0.beta1)
+      minitest (>= 5.3.3, < 6.0)
+      railties (~> 4.1)
     multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -174,10 +183,13 @@ DEPENDENCIES
   acts-as-taggable-on
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
+  database_cleaner
   devise
   dotenv-rails
+  factory_girl_rails
   haml
   jquery-rails
+  minitest-rails (= 2.0.0.beta1)
   omniauth-google-oauth2
   pg
   pry

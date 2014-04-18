@@ -6,9 +6,11 @@ Rails.application.routes.draw do
 
   resources :recipes do
     member do
-      get '/:slug' => 'recipes#show'
+      post :fork
     end
   end
+  get '/recipes/:id/:slug' => 'recipes#show'
+
   resources :tags, only: [:show]
   resources :users, only: [:show] do
     member do

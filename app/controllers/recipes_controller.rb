@@ -1,11 +1,16 @@
 class RecipesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update,
-                                            :destroy]
+                                            :destroy, :fork]
 
-  before_filter :find_recipe, only: [:show, :edit, :update, :destroy]
+  before_filter :find_recipe, only: [:show, :edit, :update, :destroy, :fork]
+  before_filter :creator_only, except: [:index, :new, :create, :fork, :show]
 
   def index
     @recipes = RecipePresenter.build(Recipe.order("name"))
+  end
+
+  def show
+    @recipe = RecipePresenter.new(@recipe)
   end
 
   def new
@@ -35,6 +40,20 @@ class RecipesController < ApplicationController
     end
   end
 
+  def fork
+    forked_recipe = @recipe.fork(current_user)
+
+    flash[:notice] = "Recipe forked!"
+    redirect_to recipe_path(forked_recipe)
+  end
+
+  def destroy
+    @recipe.destroy
+
+    flash[:success] = 'Recipe deleted!'
+    redirect_to recipes_path
+  end
+
   private
 
   def recipe_params
@@ -44,5 +63,12 @@ class RecipesController < ApplicationController
 
   def find_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def creator_only
+    if @recipe.user != current_user
+      flash[:error] = "Sorry, that's not your recipe. Why not Fork it instead?"
+      redirect_to recipe_path(@recipe)
+    end
   end
 end

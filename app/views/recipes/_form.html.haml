@@ -22,4 +22,8 @@
   = f.submit "#{@recipe.persisted? ? 'Save' : 'Create'} Recipe",
     class: 'btn btn-primary'
   - if @recipe.persisted?
-    = link_to "Cancel", recipe_path(@recipe), class: 'text-danger cancel-link'
+    = link_to "Cancel", recipe_path(@recipe), class: 'cancel-link'
+    .pull-right
+      = link_to "Delete Recipe", recipe_path(@recipe), class: 'text-danger',
+        method: :delete,
+        'data-confirm' => "Are you sure you want to delete this recipe?"

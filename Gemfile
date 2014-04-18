@@ -28,6 +28,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry_debug'
   gem 'dotenv-rails'
+  gem 'minitest-rails', '2.0.0.beta1'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
 
 gem 'rails_12factor', group: :production
