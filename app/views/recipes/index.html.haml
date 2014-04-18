@@ -1,0 +1,17 @@
+.row
+  .col-md-10
+    %h1 All Recipes
+  .col-md-2.text-right
+    = link_to "New Recipe", new_recipe_path, class: 'btn btn-primary'
+.row
+  .col-md-12
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Created by
+      %tbody
+        - @recipes.each do |recipe|
+          %tr
+            %td= link_to recipe.name, recipe_path(recipe)
+            %td= recipe.user.name

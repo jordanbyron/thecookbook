@@ -6,6 +6,8 @@
       'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}-#{controller.action_name}"}
-    = render "layouts/flash", flash: flash
-    = yield
+    = render "layouts/navigation"
+    .container
+      = render "layouts/flash", flash: flash
+      = yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true

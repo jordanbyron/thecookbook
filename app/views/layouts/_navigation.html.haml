@@ -1,0 +1,21 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#navbar-collapse",
+        "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "/"} Recipes
+    / Collect the nav links, forms, and other content for toggling
+    #navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li= link_to "Recipes", recipes_path
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %li= link_to current_user.name, '#'
+          %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
+        - else
+          %li= link_to 'Sign in', new_user_session_path

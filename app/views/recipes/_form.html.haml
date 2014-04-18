@@ -1,0 +1,21 @@
+= form_for @recipe do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control',
+      placeholder: "Grandma's Apple Pie"
+  .form-group
+    = f.label :ingredients
+    = f.text_area :ingredients, class: 'form-control expanding',
+      placeholder: "- 5 Granny Smith Apples", 'data-paste-format' => 'ul'
+  .form-group
+    = f.label :directions
+    = f.text_area :directions, class: 'form-control expanding',
+      placeholder: "1. Mix all ingredients", 'data-paste-format' => 'ol'
+  .form-group
+    = f.label :source
+    = f.text_field :source, class: 'form-control',
+      placeholder: "http://recipe-source.com"
+  = f.submit "#{@recipe.persisted? ? 'Save' : 'Create'} Recipe",
+    class: 'btn btn-primary'
+  - if @recipe.persisted?
+    = link_to "Cancel", recipe_path(@recipe), class: 'text-danger cancel-link'

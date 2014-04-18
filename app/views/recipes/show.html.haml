@@ -1,0 +1,23 @@
+.row
+  .col-md-10
+    %h1= @recipe.name
+  .col-md-2.text-right
+    - if current_user == @recipe.user
+      = link_to "Edit Recipe", edit_recipe_path(@recipe),
+        class: 'btn btn-primary'
+.row
+  .col-md-12
+    %h2 Ingredients
+
+    :markdown
+      #{@recipe.ingredients}
+
+    %h2 Directions
+
+    :markdown
+      #{@recipe.directions}
+
+    - if @recipe.source?
+      %p
+        %strong Source:
+        = @recipe.source
