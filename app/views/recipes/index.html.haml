@@ -1,10 +1,8 @@
 - content_for(:title) { "Recipes" }
 
 .row
-  .col-md-10
+  .col-md-12
     %h1 Recipes
-  .col-md-2.text-right
-    = link_to "New Recipe", new_recipe_path, class: 'btn btn-primary'
 .row
   .col-md-12
     = render "table"

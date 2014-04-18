@@ -13,6 +13,12 @@
     #navbar-collapse.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li= link_to "Recipes", recipes_path
+        %li.divider
+        %li
+          %form{action: '#'}
+            = link_to "New Recipe", new_recipe_path,
+              class: 'btn btn-default navbar-btn'
+
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li= link_to current_user.name, '#'
