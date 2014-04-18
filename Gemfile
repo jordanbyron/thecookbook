@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 
 gem 'rails', '4.1.0'
 gem 'pg'
@@ -29,3 +29,4 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+gem 'rails_12factor', group: :production
