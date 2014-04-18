@@ -1,7 +1,10 @@
 !!!
 %html
   %head
-    %title Recipes
+    %title
+      - if yield(:title).present?
+        #{yield(:title)} -
+      The Cookbook
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}-#{controller.action_name}"}
