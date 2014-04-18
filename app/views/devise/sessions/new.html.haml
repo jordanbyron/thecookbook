@@ -1,0 +1,21 @@
+- content_for(:title) { "Sign in" }
+
+.row
+  .col-md-12
+    %h1 Sign in
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, :autofocus => true, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+      - if devise_mapping.rememberable?
+        .checkbox
+          = f.label :remember_me do
+            = f.check_box :remember_me
+            Remember me
+
+      - content_for(:devise_shared) do
+        %li= f.submit "Sign in", class: 'btn btn-primary'
+      = render "devise/shared/links"

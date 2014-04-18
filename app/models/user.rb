@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :recipes, dependent: :destroy
 
+  validates_presence_of :name
+
   def self.find_for_google_oauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
