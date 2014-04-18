@@ -8,6 +8,7 @@ class RecipePresenter < ApplicationPresenter
   delegate :id, :name, :user, :source, :ingredients, :directions, to: :recipe
 
   def tag_links
+    return if recipe.tags.empty?
     recipe.tags.map do |tag|
       h.link_to tag.name, "/tags/#{tag.name}"
     end.join(", ").html_safe
@@ -26,7 +27,7 @@ class RecipePresenter < ApplicationPresenter
   end
 
   def source
-    h.link_to recipe.source, recipe.source
+    h.link_to(recipe.source, recipe.source) if recipe.source.present?
   end
 
   def to_param
