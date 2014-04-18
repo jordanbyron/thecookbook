@@ -1,0 +1,12 @@
+- content_for(:title) { "Recipes tagged with #{@tag}" }
+
+.row
+  .col-md-10
+    %h1
+      Recipes tagged with
+      %em #{@tag}
+  .col-md-2.text-right
+    = link_to "New Recipe", new_recipe_path, class: 'btn btn-primary'
+.row
+  .col-md-12
+    = render "recipes/table"

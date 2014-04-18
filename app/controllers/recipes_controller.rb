@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   before_filter :find_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.order("name")
+    @recipes = RecipePresenter.build(Recipe.order("name"))
   end
 
   def new

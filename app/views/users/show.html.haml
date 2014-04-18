@@ -1,0 +1,12 @@
+- content_for(:title) { "Recipes created by #{@user.name}" }
+
+.row
+  .col-md-10
+    %h1
+      Recipes created by
+      %em #{@user.name}
+  .col-md-2.text-right
+    = link_to "New Recipe", new_recipe_path, class: 'btn btn-primary'
+.row
+  .col-md-12
+    = render "recipes/table"

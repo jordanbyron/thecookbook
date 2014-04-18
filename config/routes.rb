@@ -4,5 +4,15 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :recipes
+  resources :recipes do
+    member do
+      get '/:slug' => 'recipes#show'
+    end
+  end
+  resources :tags, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      get '/:slug' => 'users#show'
+    end
+  end
 end

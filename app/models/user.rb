@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
+  has_many :recipes, dependent: :destroy
+
   def self.find_for_google_oauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
