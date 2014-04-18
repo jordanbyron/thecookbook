@@ -1,0 +1,5 @@
+- flash.each do |flashtype, message|
+  - if message.is_a?(String) && message.present?
+    .alert.flash{class: "alert-#{flashtype} fade in"}
+      %a{href: "#", class:"close", data: {dismiss:"alert"}} &times;
+      = message
