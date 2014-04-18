@@ -2,7 +2,7 @@
 
 .row
   .col-md-10
-    %h1 All Recipes
+    %h1 Recipes
   .col-md-2.text-right
     = link_to "New Recipe", new_recipe_path, class: 'btn btn-primary'
 .row
@@ -11,9 +11,11 @@
       %thead
         %tr
           %th Name
+          %th Tags
           %th Created by
       %tbody
         - @recipes.each do |recipe|
           %tr
             %td= link_to recipe.name, recipe_path(recipe)
+            %td= recipe.tag_list
             %td= recipe.user.name

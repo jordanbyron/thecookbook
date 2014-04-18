@@ -12,6 +12,10 @@
     = f.text_area :directions, class: 'form-control expanding',
       placeholder: "1. Mix all ingredients", 'data-paste-format' => 'ol'
   .form-group
+    = f.label :tag_list, "Tags"
+    = f.text_field :tag_list, class: 'form-control',
+      placeholder: 'Paleo, Gluten Free, Dinner'
+  .form-group
     = f.label :source
     = f.text_field :source, class: 'form-control',
       placeholder: "http://recipe-source.com"

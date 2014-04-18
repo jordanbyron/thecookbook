@@ -15,6 +15,8 @@ gem 'redcarpet'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 
+gem 'acts-as-taggable-on'
+
 gem 'unicorn'
 
 group :development do

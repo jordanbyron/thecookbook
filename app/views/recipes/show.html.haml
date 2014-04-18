@@ -9,17 +9,26 @@
         class: 'btn btn-primary'
 .row
   .col-md-12
-    %h2 Ingredients
+    %h3 Ingredients
 
     :markdown
       #{@recipe.ingredients}
 
-    %h2 Directions
+.row
+  .col-md-12
+    %h3 Directions
 
     :markdown
       #{@recipe.directions}
+.row
+  .col-md-12
+    %hr
+    %p
+      - if @recipe.tags.any?
+        .pull-right
+          %strong Tags:
+          = @recipe.tag_list
 
-    - if @recipe.source?
-      %p
+      - if @recipe.source?
         %strong Source:
-        = @recipe.source
+        = link_to @recipe.source, @recipe.source
