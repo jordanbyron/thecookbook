@@ -5,6 +5,7 @@
       - if yield(:title).present?
         #{yield(:title)} -
       The Cookbook
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}-#{controller.action_name}"}
