@@ -5,9 +5,10 @@ $(document).on 'paste', 'textarea[data-paste-format]', (e) ->
 
   formattedText = switch $this.data('paste-format')
     when 'ul'
-      "- " + pastedText.replace(/(\r\n|\n|\r)/gm, "\n- ")
+      text = pastedText.replace(/(\r\n|\n|\r)([^-])/gm, "\n- $2")
+      if /^[^-]/.test(text) then "- #{text}" else text
     when 'ol'
-      "1. " + pastedText.replace(/(\r\n|\n|\r)/gm, "\n1. ")
+      text = pastedText.replace(/(\r\n|\n|\r)([^(\d\.)])/gm, "\n1. $2")
+      if /^[^(\d\.)]/.test(text) then "1. #{text}" else text
 
   $(this).insertAtCaret(formattedText).change()
-  console.log "Pasted"
