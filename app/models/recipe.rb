@@ -17,4 +17,8 @@ class Recipe < ActiveRecord::Base
       forked_recipe.save
     end
   end
+
+  def forked?
+    !!fork_origin
+  end
 end

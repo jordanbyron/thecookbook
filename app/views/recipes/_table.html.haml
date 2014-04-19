@@ -8,8 +8,9 @@
     - @recipes.each do |recipe|
       %tr
         %td.name
-          = link_to recipe_path(recipe) do
+          = link_to recipe_path(recipe), class: 'recipe-link' do
             = image_tag recipe.image.url, class: 'img-thumbnail img-xs'
             = recipe.name
+          = recipe.fork_origin_icon_link
         %td= recipe.tag_links
         %td= recipe.created_by
