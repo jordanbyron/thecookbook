@@ -1,4 +1,4 @@
-= form_for @recipe do |f|
+= form_for @recipe, html: {multipart: true} do |f|
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control',
@@ -11,6 +11,11 @@
     = f.label :directions
     = f.text_area :directions, class: 'form-control expanding',
       placeholder: "1. Mix all ingredients", 'data-paste-format' => 'ol'
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
+    %p.help-block
+      Take a picture of the finished product so you remember how good it looks!
   .form-group
     = f.label :tag_list, "Tags"
     = f.text_field :tag_list, class: 'form-control',

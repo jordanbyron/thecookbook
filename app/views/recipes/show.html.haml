@@ -12,18 +12,19 @@
       - else
         = @recipe.fork_link(current_user)
 .row
-  .col-md-12
+  .col-md-8
     %h3 Ingredients
 
     :markdown
       #{@recipe.ingredients}
 
-.row
-  .col-md-12
     %h3 Directions
 
     :markdown
       #{@recipe.directions}
+
+  .col-md-4
+    = image_tag @recipe.image.url, class: 'img-rounded img-responsive'
 .row
   .col-md-12
     %hr

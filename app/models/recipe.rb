@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   acts_as_taggable
+  mount_uploader :image, ImageUploader
 
   belongs_to :user
   belongs_to :fork_origin, class_name: "Recipe"

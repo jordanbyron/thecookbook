@@ -1,4 +1,4 @@
-%table.table
+%table.table.recipes
   %thead
     %tr
       %th Name
@@ -7,6 +7,9 @@
   %tbody
     - @recipes.each do |recipe|
       %tr
-        %td= link_to recipe.name, recipe_path(recipe)
+        %td.name
+          = link_to recipe_path(recipe) do
+            = image_tag recipe.image.url, class: 'img-thumbnail img-xs'
+            = recipe.name
         %td= recipe.tag_links
         %td= recipe.created_by
