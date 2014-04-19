@@ -13,6 +13,7 @@ class Recipe < ActiveRecord::Base
       forked_recipe.user           = new_user
       forked_recipe.fork_origin_id = id
       forked_recipe.tag_list       = tag_list
+      forked_recipe.image          = image
       forked_recipe.save
     end
   end

@@ -24,7 +24,8 @@
       #{@recipe.directions}
 
   .col-md-4
-    = image_tag @recipe.image.url, class: 'img-rounded img-responsive'
+    = image_tag @recipe.image.url,
+      class: 'img-rounded img-responsive recipe-image'
 .row
   .col-md-12
     %hr
