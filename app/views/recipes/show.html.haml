@@ -29,12 +29,11 @@
 .row
   .col-md-12
     %hr
-    %p
-      - if @recipe.tag_links.present?
-        .pull-right
-          %strong Tags:
-          = @recipe.tag_links
+    - if @recipe.tag_links.present?
+      .pull-right
+        %strong Tags:
+        = @recipe.tag_links
 
-      - if @recipe.source.present?
-        %strong Source:
-        = @recipe.source
+    - if @recipe.source.present?
+      %strong Source:
+      = @recipe.source
