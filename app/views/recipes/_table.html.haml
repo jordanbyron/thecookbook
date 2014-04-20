@@ -1,16 +1,17 @@
 %table.table.recipes
   %thead
     %tr
-      %th Name
+      %th{colspan: 2} Name
       %th Tags
       %th Created by
   %tbody
     - @recipes.each do |recipe|
       %tr
-        %td.name
+        %td.image
           = link_to recipe_path(recipe), class: 'recipe-link' do
             = image_tag recipe.image.url, class: 'img-thumbnail img-xs'
-            = recipe.name
+        %td.name
+          = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
           = recipe.fork_origin_icon_link
         %td= recipe.tag_links
         %td= recipe.created_by
